@@ -12,7 +12,7 @@ provider "azurerm" {
  msi_endpoint = "http://169.254.169.254/metadata/identity/oauth2/token"
 }
  
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "myterraformgroup" {
   name     = "myterraformgroup"
   location = "westeurope"
 }
