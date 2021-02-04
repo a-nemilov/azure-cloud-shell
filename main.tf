@@ -14,7 +14,7 @@ provider "azurerm" {
     # test 
     # version = "~>2.0"
     features {}
-    # msi_endpoint = "http://169.254.169.254/metadata/identity/oauth2/token"
+    msi_endpoint = "http://169.254.169.254/metadata/identity/oauth2/token"
 }
 
 # Create a resource group if it doesn't exist
