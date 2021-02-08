@@ -1,6 +1,6 @@
 variable resource_group_name {
   type        = string
-  default     = "rg"
+  default     = "eastus"
   description = "Please enter rg name"
 }
 

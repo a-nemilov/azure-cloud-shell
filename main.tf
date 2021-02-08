@@ -19,9 +19,9 @@ provider "azurerm" {
 # }
 
 module "resource_group" {
-  source = "./modules/rg_modules"
+  source = "modules/rg_modules"
   resource_group_name = "westeurope"
-  location = "work-resource-group-1"
+  location = "westus"
 }
 
  
