@@ -17,11 +17,11 @@ variable subnet_name {
   description = "Plaese enter subnet name"
 }
 variable virtual_network_address_space {
-  default     = "10.0.0.0/16"
+  default     = ["10.0.0.0/16"]
   description = "Enter virtual network address space"
 }
 variable subnet_address_prefixes {
-  default     = "10.0.2.0/24"
+  default     = ["10.0.2.0/24"]
   description = "Subnet adress prefixes"
 }
 
