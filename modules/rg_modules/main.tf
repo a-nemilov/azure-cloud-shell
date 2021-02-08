@@ -8,6 +8,6 @@ terraform {
 }
 
 resource "azurerm_resource_group" "resourcegroup" {
-name = var.resource_group_name
-location = var.location
+name = var.main_resource_group
+location = var.location_name
 }

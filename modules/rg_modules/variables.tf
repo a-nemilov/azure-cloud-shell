@@ -1,12 +1,12 @@
-variable resource_group_name {
+variable main_resource_group {
   type        = string
-  default     = "eastus"
+  # default     = "eastus"
   description = "Please enter rg name"
 }
 
-variable location {
+variable location_name {
   type        = string
-  default     = ""
+  # default     = ""
   description = "description"
 }
 

@@ -1,4 +1,4 @@
-variable location {
+variable location_name {
   type        = string
   default     = "westus"
   description = "please  enter location"
