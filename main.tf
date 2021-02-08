@@ -25,7 +25,7 @@ provider "azurerm" {
 resource "azurerm_resource_group" "resourcegroup-1" {
 name = "group-1"
 location = "westus"
-depends_on = [azurerm_resource_group.resourcegroup-2]
+depends_on = ["azurerm_resource_group.resourcegroup-2"]
 }
 
 resource "azurerm_resource_group" "resourcegroup-2" {
