@@ -15,8 +15,8 @@ provider "azurerm" {
 
 
 module "vpc" {
-  source = "./modules/rg_modules"
-  # source = "github.com/a-nemilov/azure-cloud-shell/modules/vpc"
+  # source = "./modules/rg_modules"
+  source = "github.com/a-nemilov/azure-cloud-shell/modules/vpc"
   main_resource_group = "westeurope-1"
   location_name = "eastus"
 }
