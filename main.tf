@@ -13,17 +13,28 @@ provider "azurerm" {
 }
  
 
-# resource "azurerm_resource_group" "resourcegroup" {
-# name = "work-resource-group"
-# location = "westeurope"
+
+# module "resource_group" {
+#   # source = "./modules/rg_modules"
+#   source = "github.com/a-nemilov/azure-cloud-shell/modules/rg_modules"
+
+#   resource_group_name = "westeurope"
+#   location = "westus"
 # }
 
-module "resource_group" {
-  # source = "./modules/rg_modules"
-  source = "github.com/a-nemilov/azure-cloud-shell/modules/rg_modules"
+resource "azurerm_resource_group" "resourcegroup-1" {
+name = "group-1"
+location = "westus"
+}
 
-  resource_group_name = "westeurope"
-  location = "westus"
+resource "azurerm_resource_group" "resourcegroup-2" {
+name = "group-2"
+location = "westus"
+}
+
+resource "azurerm_resource_group" "resourcegroup-3" {
+name = "group-3"
+location = "westus"
 }
 
 
