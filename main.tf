@@ -11,42 +11,70 @@
 #   features {}
 #  msi_endpoint = "http://169.254.169.254/metadata/identity/oauth2/token"
 # }
- 
 
-
-module "vpc" {
-  # source = "./modules/rg_modules"
-  source = "github.com/a-nemilov/azure-cloud-shell/modules/vpc"
-
-  main_resource_group = "westeurope-1"
-  location = "westus"
-  virtual_network_name = "my-virtual-network"
-  subnet_name = "my-subnet"
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West US"
 }
 
+resource "azurerm_virtual_network" "example" {
+  name                = "example-vnet"
+  address_space       = ["10.0.0.0/16"]
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+}
+
+resource "azurerm_subnet" "example" {
+  name                 = "example-subnet"
+  resource_group_name  = azurerm_resource_group.example.name
+  virtual_network_name = azurerm_virtual_network.example.name
+  address_prefixes     = ["10.0.1.0/24"]
+
+  delegation {
+    name = "delegation"
+
+    service_delegation {
+      name    = "Microsoft.ContainerInstance/containerGroups"
+      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action"]
+    }
+  }
+}
+ 
+
+
+# module "vpc" {
+#   # source = "./modules/rg_modules"
+#   source = "github.com/a-nemilov/azure-cloud-shell/modules/vpc"
+
+#   main_resource_group = "westeurope-1"
+#   location = "westus"
+#   virtual_network_name = "my-virtual-network"
+#   subnet_name = "my-subnet"
+# }
+
 
 
 
  
-# terraform {
-#     backend "azurerm" {
-#         storage_account_name = "examples1t1o1raccount"
-#         container_name = "con"
-#         key = "Data.terraform.tfstage"
-#     }
-# }
+terraform {
+    backend "azurerm" {
+        storage_account_name = "examples1t1o1raccount"
+        container_name = "con"
+        key = "Data.terraform.tfstage"
+    }
+}
 
-# # Create virtual network
-# resource "azurerm_virtual_network" "myterraformnetwork" {
-#     name                = "myVnet"
-#     address_space       = ["10.0.0.0/16"]
-#     location            = "eastus"
-#     resource_group_name = azurerm_resource_group.myterraformgroup.name
+# Create virtual network
+resource "azurerm_virtual_network" "myterraformnetwork" {
+    name                = "myVnet"
+    address_space       = ["10.0.0.0/16"]
+    location            = "eastus"
+    resource_group_name = azurerm_resource_group.myterraformgroup.name
 
-#     tags = {
-#         environment = "Terraform Demo"
-#     }
-# }
+    tags = {
+        environment = "Terraform Demo"
+    }
+}
 
 # # Create subnet
 # resource "azurerm_subnet" "myterraformsubnet" {
