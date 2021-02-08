@@ -1,42 +1,30 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = ">= 2.26"  
-   }
-  }
-}
- 
-provider "azurerm" {
-  features {}
- msi_endpoint = "http://169.254.169.254/metadata/identity/oauth2/token"
-}
- 
-
-
-# module "resource_group" {
-#   # source = "./modules/rg_modules"
-#   source = "github.com/a-nemilov/azure-cloud-shell/modules/rg_modules"
-
-#   resource_group_name = "westeurope"
-#   location = "westus"
+# terraform {
+#   required_providers {
+#     azurerm = {
+#       source = "hashicorp/azurerm"
+#       version = ">= 2.26"  
+#    }
+#   }
 # }
+ 
+# provider "azurerm" {
+#   features {}
+#  msi_endpoint = "http://169.254.169.254/metadata/identity/oauth2/token"
+# }
+ 
 
-resource "azurerm_resource_group" "resourcegroup-1" {
-name = "group-1"
-location = "westus"
-depends_on = ["azurerm_resource_group.resourcegroup-2"]
+
+module "vpc" {
+  # source = "./modules/rg_modules"
+  source = "github.com/a-nemilov/azure-cloud-shell/modules/vpc"
+
+  main_resource_group = "westeurope-1"
+  location = "westus"
+  virtual_network_name = "my-virtual-network"
+  subnet_name = "my-subnet"
 }
 
-resource "azurerm_resource_group" "resourcegroup-2" {
-name = "group-2"
-location = "westus"
-}
 
-resource "azurerm_resource_group" "resourcegroup-3" {
-name = "group-3"
-location = "westus"
-}
 
 
  
