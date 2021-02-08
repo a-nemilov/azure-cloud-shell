@@ -19,6 +19,8 @@ module "vpc" {
   source = "github.com/a-nemilov/azure-cloud-shell/modules/vpc"
   main_resource_group = "westeurope-1"
   location_name = "eastus"
+  virtual_network_name = "my-vn-1"
+  subnet_name = "my-sn-1"
 }
 
 
