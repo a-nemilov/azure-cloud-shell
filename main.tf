@@ -1,4 +1,4 @@
-terraform {
+ter terraform {
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
@@ -15,9 +15,9 @@ provider "azurerm" {
 
 
 module "vpc" {
-  # source = "./modules/rg_modules"
+  source = "./modules/vpc"
   source = "github.com/a-nemilov/azure-cloud-shell/modules/vpc"
-  main_resource_group = "westeurope-1"
+  # main_resource_group = "westeurope-1"
   location_name = "eastus"
   virtual_network_name = "my-vn-1"
   subnet_name = "my-sn-1"
