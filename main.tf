@@ -19,7 +19,9 @@ provider "azurerm" {
 # }
 
 module "resource_group" {
-  source = "./modules/rg_modules"
+  # source = "./modules/rg_modules"
+  source = "https://github.com/a-nemilov/azure-cloud-shell/tree/main/modules/rg_modules"
+
   resource_group_name = "westeurope"
   location = "westus"
 }
