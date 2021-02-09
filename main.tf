@@ -11,16 +11,22 @@ terraform {
     container_name        = "terraformdemo"
     key                   = "terraform.tfstate"
   }
-}
-
-terraform {
-  required_providers {
+    required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
       version = ">= 2.26"  
    }
   }
 }
+
+# terraform {
+#   required_providers {
+#     azurerm = {
+#       source = "hashicorp/azurerm"
+#       version = ">= 2.26"  
+#    }
+#   }
+# }
  
 provider "azurerm" {
   features {}
