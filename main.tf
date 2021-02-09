@@ -1,10 +1,14 @@
 terraform {
   backend "azurerm" {
-    resource_group_name  = "rg-terraformstate"
-    storage_account_name = "myterrastatestoragetest"
-    container_name       = "terraformdemo"
-    key                  = "dev.terraform.tfstate"
-    access_key = "F22fjQGC2AZtIwPdkQque2Vf9Sm0RRztOmeqnvKs5FKy76JVAW9w2JCt5g1nL4DM9QhiJX9YsX4gzYKvJCcnzw=="
+    # resource_group_name  = "rg-terraformstate"
+    # storage_account_name = "myterrastatestoragetest"
+    # container_name       = "terraformdemo"
+    # key                  = "dev.terraform.tfstate"
+    # access_key = "F22fjQGC2AZtIwPdkQque2Vf9Sm0RRztOmeqnvKs5FKy76JVAW9w2JCt5g1nL4DM9QhiJX9YsX4gzYKvJCcnzw=="
+      resource_group_name   = "rg-terraformstate"
+    storage_account_name  = "myterrastatestoragetest"
+    container_name        = "terraformdemo"
+    key                   = "terraform.tfstate"
   }
 }
 
