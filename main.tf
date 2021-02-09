@@ -1,4 +1,13 @@
 terraform {
+  backend "azurerm" {
+    resource_group_name  = "rg-terraformstate"
+    storage_account_name = "myterrastatestoragetest"
+    container_name       = "terraformdemo"
+    key                  = "dev.terraform.tfstate"
+  }
+}
+
+terraform {
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
@@ -12,14 +21,7 @@ provider "azurerm" {
  msi_endpoint = "http://169.254.169.254/metadata/identity/oauth2/token"
 }
 
-terraform {
-  backend "azurerm" {
-    resource_group_name  = "rg-terraformstate"
-    storage_account_name = "myterrastatestoragetest"
-    container_name       = "terraformdemo"
-    key                  = "dev.terraform.tfstate"
-  }
-}
+
 
 
 
