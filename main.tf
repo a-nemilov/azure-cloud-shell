@@ -49,7 +49,9 @@ module "vpc" {
   subnet_name = "my-sn-1"
 }
 
-
+output "resource_grout_id" {
+  value = azurerm_resource_group.resourcegroup-anothe-group.id
+}
 
 
  
